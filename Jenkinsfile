@@ -22,7 +22,7 @@ pipeline {
         stage('git checkout') {
             steps {
                 // Get some code from a GitHub repository
-                 git branch: 'main', url: 'https://github.com/anselmenumbisia/jjtech-maven-sonarqube-nexus-prometheus-project.git'
+                 git branch: 'main', url: 'https://github.com/ekoduro/jjtech-maven-sonarqube-nexus-project.git'
             }
 
             }
@@ -89,11 +89,11 @@ pipeline {
             steps {
                 dir('JavaWebApp/') {
                 // withSonarQubeEnv('SonarQube') {
-                    withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                    withCredentials([string(credentialsId: 'f8acbe96-44bf-470e-a431-5715860b6f9f', variable: 'SONAR_TOKEN')]) {
                         sh """
                     mvn sonar:sonar \
                       -Dsonar.projectKey=spring-boot-demo \
-                      -Dsonar.host.url=http://172.31.80.37:9000 \
+                      -Dsonar.host.url=http://172.31.87.146:9000 \
                       -Dsonar.login=$SONAR_TOKEN
                      """
                     }
